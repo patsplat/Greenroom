@@ -1,0 +1,53 @@
+/* start form styles */
+label {
+  display:block;
+}
+label.multiplechoice {
+  display:inline;
+  font-weight:normal;
+}
+div.form_row {
+  margin-bottom:5px;
+}
+input.char { width:786px; }
+input.title { width:778px; }
+textarea.richtext { width:780px; }
+input.date, input.datetime {
+  background:url(../vendor/jscalendar-1.0/img.gif) no-repeat right;
+  width:130px;
+}
+/* end form styles */
+
+ul.admin_menu {
+  padding: 0 0;
+}
+ul.admin_menu li {
+  display:block;
+  font-size:14px;
+}
+ul.admin_menu li.current {
+  font-weight:bold;
+}
+ul.admin_menu li.current li {
+  font-weight:normal;
+}
+ul.admin_menu li.current li.current {
+  font-weight:bold;
+}
+ul.admin_menu li a {
+  text-decoration:none;
+  color:#666;
+}
+ul.admin_menu li a:hover {
+  text-decoration:underline;
+}
+ul.admin_menu li hr {
+  padding:0 0;
+  margin:0 0;
+}
+ul.admin_menu li ul {
+  padding: 0 0;
+}
+ul.admin_menu li ul li {
+  font-size:12px;
+}
