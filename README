@@ -1,0 +1,61 @@
+Greenroom Design Brief
+----------------------
+
+I. Features
+
+A. No Magic: include, configure, run.
+
+  require_once("greenroom/greenroom.inc.php");
+  config_set('greenroom_url', '/greenroom');
+  $backend = new MongoBackend('spider');
+  Greenroom::admin($backend);
+
+B. Django-inspired forms API
+
+class Article extends Model {
+  function fields() {
+    return array(
+      new HiddenField('_id'),
+      new TitleField('title', 'Title'),
+      new CharField('byline', 'Byline'),
+      new RichTextField('content', 'Content'),
+      new ImageField('main_image', 'Main Image',
+        array(
+          'action_url' =>
+            config('archive_path')->url . '/file.php',
+        )),
+      new ChoiceField('section', 'Section', array('choices'=>array('first' => 'first', 'second' => 'second'))),
+      new MultipleChoiceField('topic', 'Topic', array('choices'=>array('first' => 'first', 'second' => 'second'))),
+      new DateTimeField('publish_date', 'Publish Date'),
+      new ChoiceField('status', 'Status', array('choices'=>array('draft' => 'draft', 'published'=> 'published'), 'required' => true)),
+    );
+  }
+}
+
+C. Rich DHTML/AJAX editing widgets
+
+  RichTextField
+  ImageField
+  DateTimeField
+
+D. Declarative Layout control
+
+  // wrap content in layout
+  wrap_layout("greenroom/_admin_layout.php");
+  // turn off layout
+  wrap_layout(false);
+
+II. Roadmap
+
+A. Alpha (in progress): API Exploration.  No behaviour set in stone, limited testing.  Mongo integration.  Implement the following:
+  1. Mongo Integration
+  2. Core Fields
+  3. Common Rich Fields
+    a. RichTextField
+    b. DateTimeField
+    c. ImageField
+    d. ReferenceField
+  4. Define Field and Model API
+B. Beta (January 2011): Write manual.  Write tests.  Expand developer base to ~ 5.
+C. Release (June 2011): Conference, User Group circuit.  Expand developer base to ~ 10.
+D. 2.0 Planning: Cassandra Integration?  More Field types.
